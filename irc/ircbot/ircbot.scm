@@ -13,30 +13,3 @@
 ;;this program; if not, write to the Free Software Foundation, Inc., 59 Temple 
 ;;Place, Suite 330, Boston, MA 02111-1307 USA
 
-
-;; Packaging System uses files with filename. The file contents is structured
-;; as follows :
-;; "package-name" "version-number" "pathname"
-;; eof
-;; 
-
-(define (scm-vfs-version fn)
-	(let ((v 0))
-		(let ((p (open-input-file fn)))
-			(if (string=? (read- p) "version")
-				;; returns #f 
-				(if (eof-object? (set! v (string (read- p))))))	
-
-		(define (read- s)
-			(read s)))))
-
-(define (scm-vfs-uri fn)
-	(let ((pah 0))
-		(let ((p (open-input-file fn)))
-			(read- p)
-			(read- p)
-			(if (string=? (read- p) "uri")
-				(if (eof-object? (string (set! pah (read- p)))))) 	
-
-		(define (read- s)
-			(read s)))))
