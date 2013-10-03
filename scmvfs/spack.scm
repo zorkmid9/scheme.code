@@ -30,7 +30,7 @@
 		(define (read- s)
 			(read s)))))
 
-(define (scm-vfs-path fn)
+(define (scm-vfs-uri fn)
 	(let ((pah 0))
 		(let ((p (open-input-file fn)))
 			(read- p)
