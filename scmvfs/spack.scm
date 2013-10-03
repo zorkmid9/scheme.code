@@ -25,7 +25,7 @@
 		(let ((p (open-input-file fn)))
 			(read- p)
 			;; returns #f 
-			(if (eof-object? (set! v (read- p)))) 	
+			(if (eof-object? (set! v (string (read- p)))))	
 
 		(define (read- s)
 			(read s)))))
@@ -35,7 +35,7 @@
 		(let ((p (open-input-file fn)))
 			(read- p)
 			(read- p)
-			(if (eof-object? (set! pah (read- p)))) 	
+			(if (eof-object? (string (set! pah (read- p))))) 	
 
 		(define (read- s)
 			(read s)))))
