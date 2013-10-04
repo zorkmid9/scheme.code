@@ -13,6 +13,9 @@
 ;;this program; if not, write to the Free Software Foundation, Inc., 59 Temple 
 ;;Place, Suite 330, Boston, MA 02111-1307 USA
 
+(use-modules (ice-9 popen))
+(use-modules (ice-9 rdelim))
+
 (define (make-ircbot-guile)
 	(let ((s (socket PF_INET SOCK_STREAM 0)))
 
@@ -22,9 +25,9 @@
 
 
 		(define (logon- nickname username)
-			(display "PASS *" s)
-			(display (string-append "NICK " nickname))
-			(display (string-append "USER " username " 8 * :" username))
+			(display "PASS *\r\n\r\n" s)
+			(display (string-append "NICK " nickname "\r\n\r\n"))
+			(display (string-append "USER " username " 8 * :" username "\r\n\r\n"))
 			;; server's first response
 			(do ((line (read-line s) (read-line s)))
       				((eof-object? line))
@@ -32,7 +35,7 @@
     				(newline)))
 
 		(define (join- channel)
-			(display (string-append "JOIN #" channel))
+			(display (string-append "JOIN #" channel "\r\n\r\n"))
 			;; server's join channel response
 			(do ((line (read-line s) (read-line s)))
       				((eof-object? line))

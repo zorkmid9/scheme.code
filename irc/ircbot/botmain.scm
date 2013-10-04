@@ -22,7 +22,7 @@
 			(let ((server (read)))
 			(display "What is the port number? ")
 			(let ((port (read)))
-			((bot 'connect) (symbol->string (read)) port)
+			((bot 'connect) (symbol->string server) port)
 			(display "What is the nickname ? ")
 			(let ((nickname (read)))
 			((bot 'logon) (symbol->string nickname) "bot"))
