@@ -26,10 +26,10 @@
 			(display "What is the nickname ? ")
 			(let ((nickname (read)))
 			((bot 'logon) (symbol->string nickname) "bot"))
-			(display "What is the channel name? ")
+			(display "What is the channel name (without #) ? ")
 			(let ((channel (read)))
-			((bot join) (symbol->string channel))
-			((bot snoop)))
+			((bot 'join) (symbol->string channel))
+			((bot 'snoop)))
 				))))
 
 		(else (display "Unknown Scheme system. Aborting..."))))
