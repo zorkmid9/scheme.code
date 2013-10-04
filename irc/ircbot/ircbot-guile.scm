@@ -42,6 +42,13 @@
     				(display line)
     				(newline)))
 
+		(define (snoop-)
+			(do ((line (read-line s) (read-line s)))
+      				((eof-object? line))
+    				(display line)
+    				(newline)))
+			
+
 		(define (quit-)
 			(display "QUIT" s))
 
@@ -49,6 +56,7 @@
 			(cond ((eq? msg 'connect) connect-)
 				((eq? msg 'logon) logon-)
 				((eq? msg 'join) join-)
+				((eq? msg 'snoop) snoop-)
 				((eq? msg 'quit) quit-)
 
 				(else (display "make-ircbot-guile : message not understood : ")(display msg)(newline))))))
